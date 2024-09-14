@@ -1,30 +1,34 @@
 # Rsbuild Project
 
-## Setup
+This is a project made purely with rsbuild,
+to run it, below are the instructions,
 
-Install the dependencies:
+First, install dependencies
 
 ```bash
-pnpm install
+npm install
 ```
 
-## Get Started
-
-Start the dev server:
+If you want to see the ui component library, run:
 
 ```bash
-pnpm dev
+npm run storybook
 ```
 
-Build the app for production:
+For start the dev server:
 
 ```bash
-pnpm build
+npm run dev
+```
+
+For build the app for production:
+
+```bash
+npm run build
 ```
 
 Preview the production build locally:
 
 ```bash
-pnpm preview
+npm run preview
 ```
-# prueba-tecnica
