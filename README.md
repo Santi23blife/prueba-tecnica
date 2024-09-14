@@ -1,4 +1,8 @@
-# Rsbuild Project
+# Event Manager
+
+### Application for event management
+
+![image-cover](./src/img/app-cover.jpeg)
 
 This is a project made purely with rsbuild,
 to run it, below are the instructions,
