@@ -1,0 +1,9 @@
+.interactive {
+  transition: background-color 0.4s;
+}
+
+.interactive:hover {
+  cursor: pointer;
+  transition: background-color 0.4s;
+  background-color: #e5e7eb;
+}
