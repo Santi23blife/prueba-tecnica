@@ -79,7 +79,7 @@ const Dashboard: React.FC = () => {
         </Avatar>
       </div>
       <aside className="w-full h-full flex flex-row">
-        <div className="w-1/2 h-[calc(100vh-4rem)] overflow-hidden relative flex justify-center items-center">
+        <div className="w-3/4 h-[calc(100vh-4rem)] overflow-hidden relative flex justify-center items-center">
           <ListCardsMUI
             maxHeight={"calc(100vh - 4rem)"}
             listCardsMUI={events}
@@ -122,10 +122,7 @@ const Dashboard: React.FC = () => {
           </Modal>
         </div>
         <div className="w-full h-full bg-blue-200">
-          <MapEmbed
-            coords={[19.01, -98.18]}
-            styles={{ width: "100%", height: "100%" }}
-          />
+          <MapEmbed styles={{ width: "100%", height: "100%" }} />
         </div>
       </aside>
     </main>

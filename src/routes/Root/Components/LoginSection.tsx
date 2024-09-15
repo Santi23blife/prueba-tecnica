@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ButtonMUI } from "../../../stories/Button";
 import Form, { Field } from "../../../stories/Form";
 import { Text } from "../../../stories/Text";
@@ -19,7 +19,12 @@ const LoginSection: React.FC = () => {
     } as Field,
   ];
   const navigate = useNavigate();
-  const handleLogin = () => {
+  const handleLogin = (userEmail?: "string") => {
+    if (userEmail) {
+      document.cookie = `user=${userEmail}`;
+    } else {
+      document.cookie = "user=guest";
+    }
     navigate("/dashboard");
   };
   return (
@@ -29,7 +34,7 @@ const LoginSection: React.FC = () => {
         <Text text="Sign in to your account" size="medium" variant="h2" />
         <Form
           fields={formInfo}
-          handleSubmit={() => console.log("hola")}
+          handleSubmit={(e) => handleLogin(e.email)}
           submitText="Entrar"
           boxStyles={{
             width: "100%",

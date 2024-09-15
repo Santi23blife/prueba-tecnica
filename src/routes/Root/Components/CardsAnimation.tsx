@@ -1,44 +1,48 @@
-import { CardMUI } from "../../../stories/CardMUI";
+import { CardMUI, CardProps } from "../../../stories/CardMUI";
 import styles from ".//CardsAnimation.module.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { EffectCoverflow, Autoplay } from "swiper/modules";
 
 const CardsAnimation: React.FC = () => {
-  const cardsExample = [
+  const cardsExample: CardProps[] = [
     {
       title: "Team Meeting",
       content: "09/13/2024 9:00 AM",
-      styles: { translate: "0px 10px", scale: "1", zIndex: "7" },
+      color: "red",
     },
     {
       title: "Project Deadline",
       content: "09/14/2024 11:59 PM",
-      styles: { translate: "60px", scale: "1.15", zIndex: "8" },
+      color: "yellow",
     },
     {
       title: "Date with Dani",
       content: "Today 5:00 PM",
-      styles: { translate: "100px", scale: "1.2", zIndex: "9" },
     },
     {
       title: "Meet with Caro",
       content: "10/12/2024 10:00 AM",
-      styles: { translate: "140px", scale: "1.25", zIndex: "10" },
     },
     {
       title: "Gym Session",
       content: "09/15/2024 7:00 AM",
-      styles: { translate: "100px", scale: "1.2", zIndex: "9" },
+      color: "red",
     },
     {
       title: "Conference Call",
       content: "09/16/2024 3:00 PM",
-      styles: { translate: "60px", scale: "1.15", zIndex: "8" },
+      color: "yellow",
     },
     {
       title: "Lunch with Sarah",
       content: "09/17/2024 12:30 PM",
-      styles: { translate: "0px -10px", scale: "1", zIndex: "7" },
     },
   ];
+
+  const carrouselElements = [...cardsExample, ...cardsExample];
 
   return (
     <section className="bg-red w-full h-full flex justify-center items-center">
@@ -47,17 +51,47 @@ const CardsAnimation: React.FC = () => {
           "flex justify-center items-center w-full h-3/4 " + styles.fade_overlay
         }
       >
-        <ul
-          className={"w-2/4 flex flex-col gap-3 -translate-x-24 relative z-10 "}
-        >
-          {cardsExample.map(({ title, content, styles }, index) => (
-            <CardMUI
-              content={content}
-              title={title}
-              styles={styles}
-              key={index}
-            />
-          ))}
+        <ul className={"w-2/3 flex flex-col gap-3 relative z-10 "}>
+          <Swiper
+            direction="vertical"
+            effect={"coverflow"}
+            grabCursor={true}
+            loop={true}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              reverseDirection: true,
+            }}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: -4,
+              depth: 100,
+              modifier: 1,
+              slideShadows: false,
+              scale: 0.9,
+            }}
+            pagination={true}
+            modules={[EffectCoverflow, Autoplay]}
+            className="w-full h-full overflow-visible"
+          >
+            {carrouselElements.map(
+              ({ title, content, color = "white" }, index) => {
+                return (
+                  <SwiperSlide>
+                    <CardMUI
+                      content={content}
+                      title={title}
+                      key={index}
+                      color={color}
+                      styles={{ height: "100px", width: "100%" }}
+                    />
+                  </SwiperSlide>
+                );
+              }
+            )}
+          </Swiper>
         </ul>
       </div>
     </section>

@@ -9,10 +9,10 @@ import Form, { Field } from "./Form";
 import { setMapSearch } from "../redux/mapSearchSlice";
 import { useDispatch } from "react-redux";
 
-interface CardProps {
+export interface CardProps {
   title: string;
   content: string;
-  color?: "black" | "gray" | "red";
+  color?: "red" | "white" | "yellow";
   colorTitle?: "black" | "gray" | "red";
   colorContent?: "black" | "gray" | "red";
   backgroundColor?: string;
@@ -24,17 +24,24 @@ interface CardProps {
 export const CardMUI: React.FC<CardProps> = ({
   title,
   content,
-  colorTitle = "black",
-  colorContent = "black",
+  color = "white",
   backgroundColor = "white",
   styles = {},
   classNames = "",
   index = 0,
 }) => {
   const colorsMap = {
-    black: "#000000",
-    gray: "#3A3B3C",
-    red: "#B02727",
+    red: "#FF5151",
+    yellow: "#FFD151",
+    white: "#FFFFFF",
+  };
+
+  const colorText = () => (color === "white" ? "black" : "white");
+
+  const messagesNotificationMap = {
+    red: "Already expired!",
+    yellow: "Almost expired!",
+    white: "Upcoming event!",
   };
 
   const style = {
@@ -111,23 +118,25 @@ export const CardMUI: React.FC<CardProps> = ({
           minWidth: 300,
           minHeight: 84,
           ...styles,
+          backgroundColor: colorsMap[color],
         }}
         classes={{ root: classNames }}
         onClick={() => handleOpen()}
       >
         <CardHeader
-          title={title}
-          subheader={
-            <Text variant="h1" text={content} color={colorsMap[colorContent]} />
-          }
+          title={title + ` - ${messagesNotificationMap[color]}`}
+          style={{
+            backgroundColor: colorsMap[color],
+          }}
+          subheader={<Text variant="h1" text={content} color={colorText()} />}
           action={
             <AnimationNotification
               iconName="notification"
-              onClick={() => console.log("hola, como estas?")}
+              onClick={() => console.log("Notification")}
             />
           }
           sx={{
-            color: colorsMap[colorTitle],
+            color: colorText(),
             backgroundColor: backgroundColor,
           }}
         />

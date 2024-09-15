@@ -2,10 +2,9 @@
   mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
-    /* Totalmente transparente en la parte superior */ rgba(0, 0, 0, 1) 20%,
-    /* Completamente visible desde el 20% */ rgba(0, 0, 0, 1) 80%,
-    /* Mantiene visibilidad hasta el 80% */ rgba(0, 0, 0, 0) 100%
-      /* Vuelve a ser transparente al 100% */
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0) 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
@@ -13,5 +12,18 @@
     rgba(0, 0, 0, 1) 20%,
     rgba(0, 0, 0, 1) 80%,
     rgba(0, 0, 0, 0) 100%
-  ); /* Para soporte en WebKit */
+  );
 }
+/* 
+.carrousel_infinite {
+  animation: infinite 7s steps(7) infinite;
+}
+
+@keyframes infinite {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(33.3%));
+  }
+} */
