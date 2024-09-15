@@ -79,11 +79,10 @@ const CardsAnimation: React.FC = () => {
             {carrouselElements.map(
               ({ title, content, color = "white" }, index) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={index}>
                     <CardMUI
                       content={content}
                       title={title}
-                      key={index}
                       color={color}
                       styles={{ height: "100px", width: "100%" }}
                     />

@@ -1,0 +1,10 @@
+.card_interactive > div {
+  background-color: white;
+  transition: background-color 0.3s;
+}
+
+.card_interactive > div:hover {
+  background-color: #f0f0f0 !important;
+  color: black !important;
+  transition: background-color 0.3s;
+}

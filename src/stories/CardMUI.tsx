@@ -8,6 +8,7 @@ import { modifyEvent } from "../redux/eventsSlice";
 import Form, { Field } from "./Form";
 import { setMapSearch } from "../redux/mapSearchSlice";
 import { useDispatch } from "react-redux";
+import stylesMod from "./CardMUI.module.css";
 
 export interface CardProps {
   title: string;
@@ -19,6 +20,7 @@ export interface CardProps {
   styles?: React.CSSProperties;
   classNames?: string;
   index?: number;
+  activeHover?: boolean;
 }
 
 export const CardMUI: React.FC<CardProps> = ({
@@ -29,6 +31,7 @@ export const CardMUI: React.FC<CardProps> = ({
   styles = {},
   classNames = "",
   index = 0,
+  activeHover = false,
 }) => {
   const colorsMap = {
     red: "#FF5151",
@@ -119,8 +122,9 @@ export const CardMUI: React.FC<CardProps> = ({
           minHeight: 84,
           ...styles,
           backgroundColor: colorsMap[color],
+          cursor: "pointer",
         }}
-        classes={{ root: classNames }}
+        className={activeHover ? stylesMod.card_interactive : ""}
         onClick={() => handleOpen()}
       >
         <CardHeader

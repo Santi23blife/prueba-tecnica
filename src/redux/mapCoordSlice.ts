@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: [19.01, -98.21],
+  value: [19.33, 90],
 };
 
 export const mapCoordSlice = createSlice({

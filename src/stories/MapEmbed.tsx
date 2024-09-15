@@ -13,7 +13,7 @@ const MapEmbed: React.FC<MapProps> = ({ styles = {} }) => {
   const coords = useSelector((state: any) => state.mapCoord);
 
   const [viewState, setViewState] = useState({
-    latitude: 12.9716,
+    latitude: 19.33,
     longitude: 77.5946,
     zoom: 12,
   });

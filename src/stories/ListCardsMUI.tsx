@@ -16,12 +16,14 @@ export interface ListCardsMUIProps {
   listCardsMUI: listCardsMUI[];
   height?: number;
   maxHeight: string;
+  activeHover?: boolean;
 }
 
 const ListCardsMUI: React.FC<ListCardsMUIProps> = ({
   listCardsMUI,
   height,
   maxHeight = "100%",
+  activeHover = false,
 }) => {
   const eventExamples = {
     normal: {
@@ -68,6 +70,7 @@ const ListCardsMUI: React.FC<ListCardsMUIProps> = ({
           colorContent={color}
           styles={{ boxShadow: "none", borderRadius: "0px", padding: "0px" }}
           classNames={styles.interactive}
+          activeHover={activeHover}
         />
       ))}
     </Box>

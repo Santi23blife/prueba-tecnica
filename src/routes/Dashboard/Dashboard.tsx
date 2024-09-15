@@ -3,11 +3,14 @@ import ListCardsMUI, { listCardsMUI } from "../../stories/ListCardsMUI";
 import MapEmbed from "../../stories/MapEmbed";
 import { Text } from "../../stories/Text";
 import { ButtonMUI } from "../../stories/Button";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useAppSelector } from "../../hooks/redux/useSelector";
 import Form, { Field } from "../../stories/Form";
 import { useAppDispatch } from "../../hooks/redux/useDispatch";
 import { addEvent } from "../../redux/eventsSlice";
+import { getCookies } from "../../utils/cookies/getCookie";
+import { useNavigate } from "react-router-dom";
+import { deleteCookie } from "../../utils/cookies/deleteCookie";
 
 const Dashboard: React.FC = () => {
   const style = {
@@ -25,6 +28,24 @@ const Dashboard: React.FC = () => {
     gap: "12px",
     borderRadius: "8px",
   };
+
+  const navigate = useNavigate();
+
+  const handleCloseSesion = () => {
+    deleteCookie("user");
+    navigate("/");
+  };
+
+  const [userEmail, setUserEmail] = useState("");
+
+  useLayoutEffect(() => {
+    if (typeof window !== "undefined") {
+      const emailUser = getCookies("user");
+      let emailFormatted =
+        emailUser.charAt(0).toUpperCase() + emailUser.slice(1);
+      setUserEmail(emailFormatted);
+    }
+  }, []);
 
   const events = useAppSelector((state) => state.events.value);
   const dispatch = useAppDispatch();
@@ -74,8 +95,12 @@ const Dashboard: React.FC = () => {
     <main className="flex flex-col w-full h-screen relative overflow-hidden">
       <div className="h-16 w-full bg-white border-[1px] flex justify-between items-center px-4">
         <Text text="Event Manager" size="large" weight="bold" color="#111" />
-        <Avatar alt="user-icon" sx={{ backgroundColor: "#444" }}>
-          In
+        <Avatar
+          alt="user-icon"
+          sx={{ backgroundColor: "#444", cursor: "pointer" }}
+          onClick={() => handleCloseSesion()}
+        >
+          {userEmail ? userEmail.slice(0, 2) : "Gu"}
         </Avatar>
       </div>
       <aside className="w-full h-full flex flex-row">
@@ -83,6 +108,7 @@ const Dashboard: React.FC = () => {
           <ListCardsMUI
             maxHeight={"calc(100vh - 4rem)"}
             listCardsMUI={events}
+            activeHover={true}
           />
           <ButtonMUI
             label="Add Event"
