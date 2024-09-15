@@ -3,7 +3,6 @@ import Card from "@mui/material/Card";
 import { Text } from "./Text";
 import AnimationNotification from "./AnimationNotificaction";
 import { useState } from "react";
-import { useAppDispatch } from "../hooks/redux/useDispatch";
 import { listCardsMUI } from "./ListCardsMUI";
 import { modifyEvent } from "../redux/eventsSlice";
 import Form, { Field } from "./Form";

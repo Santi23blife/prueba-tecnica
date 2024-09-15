@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 
-type InputProps = {
+export type InputProps = {
   label: string;
   value: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

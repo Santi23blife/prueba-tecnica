@@ -6,10 +6,10 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 interface MapProps {
-  styles: React.CSSProperties;
+  styles?: React.CSSProperties;
 }
 
-const MapEmbed: React.FC<MapProps> = ({ styles }) => {
+const MapEmbed: React.FC<MapProps> = ({ styles = {} }) => {
   const coords = useSelector((state: any) => state.mapCoord);
 
   const [viewState, setViewState] = useState({

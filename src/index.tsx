@@ -9,7 +9,7 @@ import "@fontsource/roboto/700.css";
 import Root from "./routes/Root/Root";
 import Dashboard from "./routes/Dashboard/Dashboard";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import { setupStore } from "./redux/store";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ if (rootEl) {
   const root = ReactDOM.createRoot(rootEl);
   root.render(
     <React.StrictMode>
-      <Provider store={store}>
+      <Provider store={setupStore()}>
         <RouterProvider router={router} />
       </Provider>
     </React.StrictMode>

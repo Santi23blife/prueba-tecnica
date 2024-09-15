@@ -21,7 +21,7 @@ export interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({
-  fields,
+  fields = [],
   handleSubmit = () => {},
   submitText = "",
   formStyles = {},

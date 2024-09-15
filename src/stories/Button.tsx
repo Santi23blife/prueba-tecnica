@@ -1,4 +1,3 @@
-import "./button.css";
 import { Button } from "@mui/material";
 
 export interface ButtonProps {

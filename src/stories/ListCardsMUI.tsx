@@ -1,7 +1,7 @@
 import React from "react";
 import { CardMUI } from "./CardMUI";
 import Box from "@mui/material/Box";
-import "./ListCardsMUI.css";
+import styles from "./ListCardsMUI.module.css";
 
 export interface listCardsMUI {
   title: string;
@@ -9,7 +9,7 @@ export interface listCardsMUI {
   color?: "black" | "red";
 }
 
-interface ListCardsMUIProps {
+export interface ListCardsMUIProps {
   /**
    * ListCardsMUI is a list of cards
    */
@@ -67,7 +67,7 @@ const ListCardsMUI: React.FC<ListCardsMUIProps> = ({
           colorTitle={color}
           colorContent={color}
           styles={{ boxShadow: "none", borderRadius: "0px", padding: "0px" }}
-          classNames="interactive"
+          classNames={styles.interactive}
         />
       ))}
     </Box>
